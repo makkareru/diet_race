@@ -1,0 +1,8 @@
+= link_to "新規プレイヤー", new_admin_player_path
+
+- @players.each do |p|
+  %p= p.name
+  %p= p.weight
+  %p= p.profile
+  %p= p.ranking
+  %p= link_to "編集", edit_admin_player_path(id: p.id)

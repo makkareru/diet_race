@@ -1,0 +1,7 @@
+%h1 新規プレイヤー作成
+= simple_form_for ['admin',@player] do |f|
+  = f.input :name
+  = f.input :weight
+  = f.input :profile
+  = f.input :ranking
+  = f.submit
