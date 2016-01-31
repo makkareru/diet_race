@@ -20,7 +20,7 @@ class Admin < ActiveRecord::Base
     self.encrypted_password = Digest::SHA1.hexdigest(self.password)
   end
 
-  def after_save
+  def clear_password
     self.password = nil
   end
 end
