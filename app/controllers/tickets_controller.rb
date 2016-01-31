@@ -11,8 +11,9 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new(ticket_params)
     unless @ticket.save
       render :new
+    else
+      redirect_to root_path
     end
-    redirect_to root_path
   end
 
   private
