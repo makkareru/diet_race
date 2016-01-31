@@ -1,0 +1,119 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+html {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  width: 100%;
+  height: 75px;
+  float: left;
+  text-align: center;
+  background-color: #FFF;
+}
+
+.logo {
+  float: left;
+  font-size: 24px;
+  width: 150px;
+  line-height: 65px;
+  padding: 3px 18px;
+  font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+  color: black;
+
+}
+
+.nav {
+  float: left;
+  line-height: 120px;
+}
+
+.nav_item {
+  float: left;
+  width: 150px;
+  padding: 5px 5px;
+}
+
+.container-flued {
+  position: relative;
+}
+
+.container {
+}
+
+.catch_copy_container {
+  position: absolute;
+  top: 115px;
+  left: 45px;
+}
+.image_container {
+  position: relative;
+  text-align: center;
+  background-color: #000;
+
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.top_img {
+  width: 60%;
+}
+
+.top_title {
+  color: white;
+}
+
+.catch_copy {
+  color: white;
+}
+
+.ticket_form {
+  position: absolute;
+  top: 80px;
+  right: 100px;
+  color: white;
+}
+
+.ticket_form_title {
+  text-align: center;
+}
+
+.ticket_form_item {
+  width: 100%;
+  padding: 5px;
+  margin: 10px 0;
+}
+
+.ticket_form_submit {
+  width: 100%;
+  padding: 50px; 
+  margin: 0 auto;
+}
+
+.player_list {
+  position: absolute;
+  top: 300px;
+  left: 25px;
+  color: white;
+}

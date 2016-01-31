@@ -1,0 +1,24 @@
+%div.conteiner-flued
+  %div.container
+    %div.image_container
+      = image_tag 'top.jpg', class: 'top_img'
+    %div.catch_copy_container
+      %h1.top_title
+        第二回 IACC ダイエットレース
+      %h2.catch_copy
+        1, 2 位を当てて配当金を手に入れよう！!
+    %div.ticket_form
+      %h2.ticket_form_title 購入フォーム
+      = simple_form_for @ticket do |f|
+        = f.input :name, input_html: {class: "ticket_form_item"}
+        = f.input :email, input_html: {class: "ticket_form_item"}
+        = f.input :player_1, input_html: {class: "ticket_form_item"}
+        = f.input :player_2, input_html: {class: "ticket_form_item"}
+        = f.input :number_of_set, input_html: {class: "ticket_form_item"}
+        = f.submit "購入", class: "ticket_form_submit"
+    %div.player_list
+      %h3 参加メンバー
+      %ul
+        - @players.each do |p|
+          %li= "No.#{p.id}　#{p.name}　：　#{p.weight} kg"
+

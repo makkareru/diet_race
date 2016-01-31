@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  root to: 'top#index'
+
   resources :players, only: [:index, :show]
+  resources :tickets, only: [:index, :new, :create]
+
   namespace :admin do
     resources :players, only: [:index, :new, :create, :edit]
   end

@@ -1,0 +1,8 @@
+%h1 チケット購入
+= simple_form_for @ticket do |f|
+  = f.input :name
+  = f.input :email
+  = f.input :player_1
+  = f.input :player_2
+  = f.input :number_of_set
+  = f.submit
