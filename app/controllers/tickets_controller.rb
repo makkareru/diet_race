@@ -1,6 +1,7 @@
 class TicketsController < ApplicationController
   def index
     @players = Player.all
+    @total = calc_number_of_tickets.to_f
   end
 
   def new
@@ -15,6 +16,14 @@ class TicketsController < ApplicationController
     else
       redirect_to root_path
     end
+  end
+
+  def calc_number_of_tickets
+    sum = 0
+    Ticket.all.each do |t|
+      sum = sum + t.number_of_set
+    end
+    sum
   end
 
   private
