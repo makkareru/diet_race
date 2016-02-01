@@ -1,6 +1,15 @@
-%table
+%table{ style: "border solid 1px black; text-align:center;" }
+  %tr
+    %th
+    - @players.each do |p2|
+      %th= p2.name
   - @players.each do |p2|
     %tr
-      - @players.each do |p1|
+      - @players.each.with_index do |p1,index|
+        - if index == 0
+          %th= p2.name
         %td
-          %p= Ticket.where(player_1: p1.id).where(player_2: p2.id).count / Ticket.all.count.to_f
+          - if p1 == p2
+            %p ー
+          - else
+            %p= Ticket.where(player_1: p1.id).where(player_2: p2.id).count / Ticket.all.count.to_f

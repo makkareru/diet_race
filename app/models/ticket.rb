@@ -3,5 +3,13 @@ class Ticket < ActiveRecord::Base
   validates :email, presence: true
   validates :player_1, presence: true
   validates :player_2, presence: true
-  validates :number_of_set, presence: true
+  validates :number_of_set, presence: true, numericality: { greater_than: 0 }
+  validate :no_equal_player
+
+  def no_equal_player
+    if player_1 == player_2
+      errors.add(:player_1, "同じ選手を選択できません。")
+      errors.add(:player_2, "同じ選手を選択できません。")
+    end
+  end
 end
