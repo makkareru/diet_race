@@ -5,6 +5,7 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = Ticket.new
+    @players = Player.all
   end
 
   def create

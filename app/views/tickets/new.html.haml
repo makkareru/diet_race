@@ -1,8 +1,10 @@
-%h1 チケット購入
-= simple_form_for @ticket do |f|
-  = f.input :name
-  = f.input :email
-  = f.input :player_1
-  = f.input :player_2
-  = f.input :number_of_set
-  = f.submit
+%div{style: "maring-top: 40px; padding: 24px 40px; width: 50%;"}
+  = simple_form_for @ticket do |f|
+    - @ticket.errors.full_messages.each do |msg|
+      msg
+    = f.input :name, input_html: {class: "ticket_form_item"}
+    = f.input :email, input_html: {class: "ticket_form_item"}
+    = f.input :player_1, collection: @players, label: "一位予想の選手", input_html: {class: "ticket_form_item"}
+    = f.input :player_2, collection: @players, label: "二位予想の選手名", input_html: {class: "ticket_form_item"}
+    = f.input :number_of_set, label: "購入数", input_html: {class: "ticket_form_item"}
+    = f.submit "購入", class: "ticket_form_submit"
