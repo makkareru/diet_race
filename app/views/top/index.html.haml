@@ -1,31 +1,38 @@
+- table_th_color = ['white', 'gray', 'red', 'blue', 'yellow', 'green', 'orenge', 'pink']
 %div.conteiner-flued
   %div.container
     %div.image_container
-      = image_tag 'top.jpg', class: 'top_img'
-    %div.catch_copy_container
-      %h1.top_title
-        第二回 IACC ダイエットレース
-      %h2.catch_copy
-        1, 2 位を当てて配当金を手に入れよう！!
+      = image_tag 'mainview.png', class: 'top_img'
+      = image_tag 'bg_fire.jpg', class: 'bg_img'
+    /%div.catch_copy_container
+    /%div.ticket_form
+    %div.player_list
+      %table
+        - @players.each.with_index do |p,i|
+          - table_bg_color = "black" if i % 2 == 0
+          - table_bg_color = "gray"  if i % 2 != 0
+          %tr{style: "background-color: #{table_bg_color}"}
+            %th{style: "background-color: #{table_th_color[i]}"}
+              = i+1
+            %td
+              = p.name
+            %td
+              = p.real_name
+            %td
+              = "#{p.weight} kg"
+            %td
+              odds
     %div.ticket_form
       %h2.ticket_form_title チケット購入フォーム
-      = simple_form_for @ticket do |f|
-        - @ticket.errors.full_messages.each do |msg|
-          = msg
-        =# f.input :ticket_type, as: :radio_buttons, collection: Ticket.ticket_types, checked: 0
-        = f.input :ticket_type
-        = f.input :name, input_html: {class: "ticket_form_item"}
-        = f.input :email, input_html: {class: "ticket_form_item"}
-        = f.input :player_1, collection: @players, label: "一位予想の選手", input_html: {class: "ticket_form_item"}
-        = f.input :player_2, collection: @players, label: "二位予想の選手名", input_html: {class: "ticket_form_item"}
-        = f.input :number_of_set, label: "購入数（一口 1,000円）", input_html: {class: "ticket_form_item"}
-        = f.submit "購入", class: "ticket_form_submit"
-    %div.player_list
-      %h3 参加メンバー
-      %ul
-        - @players.each do |p|
-          %li= "No.#{p.id}　#{p.name}　：　#{p.weight} kg"
-  %div{style: "background-color:#A6DE85; width:100%;"}
-    %h2{style: "margin: 0; padding: 24px 24px 2px 24px;"} ▼ 当サイトの違法性について
-    %p{style: "padding: 0px 40px 24px"} 賭博を行うと、どうなのるのか？　刑法第185条および186条で、賭博を（常習）すること、開帳することについての刑罰が規定されており、その罰を受けます。ただし、賭博が何でもかんでも刑罰の対象になるわけでななく、「一時の娯楽に供する物を賭けたにとどまるときは、この限りでない」とされています。
-
+      %div.ticket_form_items
+        = simple_form_for @ticket do |f|
+          - @ticket.errors.full_messages.each do |msg|
+            = msg
+          = f.input :ticket_type, as: :radio_buttons, collection: Ticket.ticket_types, checked: 0
+          = f.input :name, input_html: {class: "ticket_form_item"}
+          = f.input :email, input_html: {class: "ticket_form_item"}
+          = f.input :player_1, collection: @players, label: "一位予想の選手", input_html: {class: "ticket_form_item"}
+          = f.input :player_2, collection: @players, label: "二位予想の選手名", input_html: {class: "ticket_form_item"}
+          = f.input :number_of_set, label: "購入数", input_html: {class: "ticket_form_item"}
+          %div.submit_field
+            = f.submit "購入", class: "ticket_form_submit"
