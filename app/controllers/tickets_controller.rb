@@ -30,6 +30,6 @@ class TicketsController < ApplicationController
 
   def ticket_params
     params.require(:ticket).
-      permit(:name,:email,:player_1,:player_2,:number_of_set)
+      permit(:name,:email,:player_1,:player_2,:number_of_set,:ticket_type)
   end
 end

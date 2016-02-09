@@ -11,7 +11,9 @@
       %h2.ticket_form_title チケット購入フォーム
       = simple_form_for @ticket do |f|
         - @ticket.errors.full_messages.each do |msg|
-          msg
+          = msg
+        =# f.input :ticket_type, as: :radio_buttons, collection: Ticket.ticket_types, checked: 0
+        = f.input :ticket_type
         = f.input :name, input_html: {class: "ticket_form_item"}
         = f.input :email, input_html: {class: "ticket_form_item"}
         = f.input :player_1, collection: @players, label: "一位予想の選手", input_html: {class: "ticket_form_item"}
