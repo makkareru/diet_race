@@ -113,19 +113,24 @@ header {
 }
 
 .ticket_form_title {
+  padding-top: 20px;
   text-align: center;
 }
 
 .ticket_form_items {
-  padding: 50px;
   margin: 10px 0 auto;
   top: 100px;
+}
+
+.ticket_form_items table {
+  padding-bottom: 30px;
 }
 
 .ticket_form_item {
   width: 80%;
   padding: 5px;
   margin-bottom: 20px;
+  text-align: left;
 }
 
 .simple_form label {
@@ -134,13 +139,18 @@ header {
   margin: 10px;
 }
 
+form {
+  margin: 0 auto;
+}
+
 .simple_form div.input {
   margin-bottom: 10px;
   clear: both; /* Required for Webkit, but not for Gecko */
 }
 
 .simple_form div.input input[type="text"], input[type="email"], input[type="number"], select {
-  text-align: right;
+  text-align: left;
+  font-size: 18px;
   width: 400px;
 }
 
@@ -149,9 +159,20 @@ header {
 }
 
 .ticket_form_submit {
-  width: 40%;
-  padding: 50px; 
-  font-size: 120px;
+        -webkit-box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+        -moz-box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+        box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+        color:#333;
+        background-color:#BB3B4C;
+        border-radius:5px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        border:none;
+        font-family:'Helvetica Neue',Arial,sans-serif;
+        font-size:16px;
+        font-weight:700;
+        height:40px;
+        padding:10px 160px;
 }
 
 .player_list table {

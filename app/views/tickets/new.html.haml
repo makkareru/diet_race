@@ -1,11 +1,69 @@
-%div{style: "maring-top: 40px; padding: 24px 40px; width: 50%;"}
-  = simple_form_for @ticket do |f|
-    - @ticket.errors.full_messages.each do |msg|
-      = msg
-    = f.input :ticket_type, as: :radio_buttons, collection: Ticket.ticket_types
-    = f.input :name, input_html: {class: "ticket_form_item"}
-    = f.input :email, input_html: {class: "ticket_form_item"}
-    = f.input :player_1, collection: @players, label: "一位予想の選手", input_html: {class: "ticket_form_item"}
-    = f.input :player_2, collection: @players, label: "二位予想の選手名", input_html: {class: "ticket_form_item"}
-    = f.input :number_of_set, label: "購入数", input_html: {class: "ticket_form_item"}
-    = f.submit "購入", class: "ticket_form_submit"
+- table_th_color = ['white', 'gray', 'red', 'blue', 'yellow', 'green', 'orange', 'pink']
+%div.conteiner-flued
+  %div.container
+    %div.image_container
+      = image_tag 'mainview.png', class: 'top_img'
+      = image_tag 'bg_fire.jpg', class: 'bg_img'
+    /%div.catch_copy_container
+    /%div.ticket_form
+    %div.player_list
+      %table
+        - @players.each.with_index do |p,i|
+          - table_bg_color = "black" if i % 2 == 0
+          - table_bg_color = "gray"  if i % 2 != 0
+          %tr{style: "background-color: #{table_bg_color}"}
+            %th{style: "background-color: #{table_th_color[i]}"}
+              = i+1
+            %td
+              = p.name
+            %td
+              = p.real_name
+            %td
+              - if p.real_name == "江口"
+                Comming Soon
+              - else
+                = "#{p.weight} kg"
+            %td
+              odds
+    %div.ticket_form
+      %h2.ticket_form_title 
+      = simple_form_for @ticket do |f|
+        %div.ticket_form_items
+          %table{style: "border: none; margin: 0 auto;"}
+            %tr
+              %th
+                - @ticket.errors.full_messages.each do |msg|
+                  = msg
+            %tr
+              %th
+                チケット種別
+              %td
+                = f.input :ticket_type, label: "", as: :radio_buttons, collection: Ticket.ticket_types, checked: 0
+            %tr
+              %th
+                お名前
+              %td
+                = f.input :name, label: "", input_html: {class: "ticket_form_item"}
+            %tr
+              %th
+                メールアドレス
+              %td
+                = f.input :email, label: "", input_html: {class: "ticket_form_item"}
+            %tr
+              %th
+                一位予想
+              %td
+                = f.input :player_1, label: "", collection: @players, input_html: {class: "ticket_form_item"}
+            %tr
+              %th
+                二位予想
+              %td
+                = f.input :player_2, label: "*", collection: @players, input_html: {class: "ticket_form_item"}
+            %tr
+              %th
+                セット数
+              %td
+                = f.input :number_of_set, label: "", input_html: {class: "ticket_form_item"}
+            %tr
+              %th{colspan: 2}
+                = f.submit "送信する", class: "ticket_form_submit"

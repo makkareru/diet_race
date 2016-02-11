@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'top#index'
+  root to: 'tickets#new'
 
   resources :players, only: [:index, :show]
   resources :tickets, only: [:index, :new, :create]
