@@ -1,3 +1,28 @@
-Message#regist
+<% @ticket.name %> はん
 
-<%= @greeting %>, find me in app/views/message/regist.text.erb
+もうかりまっかー？
+わて、このダイエットレースの主催者の樋口いいまんねや。
+（ビリケン？誰がビリケンやねん！やかましわ！）
+
+でもほんまきてくれてありがとな。
+今回は、2回目のレースなんやけど、わてら肥満児は
+なんかキッカケないと痩せられへんねん。たいがいやで。
+
+以下の内容でかけとるから、ちゃんと再度までみといてや。
+
+<% if @ticket.ticket_type == "short" %>
+単勝： <%= Player.find(@ticket.player_1).name %>
+<%= @ticket.number_of_set * 1000 %> ペリカ
+<% else %>
+連勝：
+・一位予想 <%= Player.find(@ticket.player_1).name %>
+・二位予想 <%= Player.find(@ticket.player_2).name %>
+<%= @ticket.number_of_set * 1000 %> ペリカ
+<% end %>
+
+
+ちゃんと賭けた選手にはムチいれてな。いうて、勝たそうおもて、
+ライバルにアメはあかんねんでー。
+食べさすんならケンタッキーフライドチキンにしてー、
+てだから太るんやで！
+ほな応援よろしくな。

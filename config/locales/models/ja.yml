@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      ticket: チケット
+    attibutes:
+    enum:
+      ticket:
+        short: 単勝
+        double: 連勝

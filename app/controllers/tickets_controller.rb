@@ -11,9 +11,12 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.new(ticket_params)
+    @players = Player.all
     unless @ticket.save
+      flash[:message] = "入力エラーがあります！ご確認ください"
       render :new
     else
+      flash[:message] = "応援ありがとうございます！"
       redirect_to root_path
     end
   end

@@ -5,9 +5,11 @@ class Message < ApplicationMailer
   #
   #   en.message.regist.subject
   #
-  def regist
-    @greeting = "Hi"
+  def regist ticket
+    @ticket = ticket
+    filepath = Rails.root.join('app/assets/images/higuchi.jpg')
+    attachments['filename.jpg'] = File.read(filepath)
 
-    mail to: "info@iacc-diet-race.com"
+    mail to: @ticket.email, subject: "【IACCダイエットレース】Thanks メール"
   end
 end

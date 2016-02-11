@@ -1,6 +1,8 @@
 - table_th_color = ['white', 'gray', 'red', 'blue', 'yellow', 'green', 'orange', 'pink']
 %div.conteiner-flued
   %div.container
+    - if flash[:message] 
+      %h1.message= flash[:message]
     %div.image_container
       = image_tag 'mainview.png', class: 'top_img'
       = image_tag 'bg_fire.jpg', class: 'bg_img'
@@ -30,10 +32,6 @@
       = simple_form_for @ticket do |f|
         %div.ticket_form_items
           %table{style: "border: none; margin: 0 auto;"}
-            %tr
-              %th
-                - @ticket.errors.full_messages.each do |msg|
-                  = msg
             %tr
               %th
                 チケット種別

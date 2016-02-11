@@ -19,7 +19,7 @@ class Ticket < ActiveRecord::Base
   end
 
   def send_thanks_message
-    Message.regist.deliver_now
+    Message.regist(self).deliver_now
   end
 
   def type_streak?
