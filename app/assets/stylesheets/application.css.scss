@@ -109,7 +109,7 @@ header {
   background-color: black;
   color: white;
   margin: 0 auto;
-  margin-bottom: 200px;
+  margin-bottom: 20px;
 }
 
 .ticket_form_title {
@@ -209,4 +209,8 @@ form {
 
 #second_player {
   display: none;
+}
+
+small {
+  color: gray;
 }

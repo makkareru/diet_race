@@ -1,4 +1,4 @@
-- table_th_color = ['white', 'gray', 'red', 'blue', 'yellow', 'green', 'orange', 'pink']
+- table_th_color = ['white', 'gray', 'red', 'blue', 'yellow', 'green', 'orange', 'pink', '#CC9966']
 %div.conteiner-flued
   %div.container
     - if flash[:message] 
@@ -26,7 +26,10 @@
               - else
                 = "#{p.weight} kg"
             %td
-              odds
+              - sum = 0
+              - Ticket.short.where(player_1: p.id).each do |t|
+                - sum = sum + t.number_of_set
+              = (1 / (sum / @short_total.to_f)).round(2)
     %div.ticket_form
       %h2.ticket_form_title 
       = simple_form_for @ticket do |f|
@@ -66,3 +69,32 @@
             %tr
               %th{colspan: 2}
                 = f.submit "送信する", class: "ticket_form_submit"
+          %div{style: "text-align: center"}
+            %br
+            %small ※1 体重の減少が最も高い選手を当てるゲームです
+            %small 　※2 単勝：一位予想の選手を当てると勝ちです
+            %small 　連勝：一位、二位の選手を順位どおりに当てると勝ちです
+
+    %h2{style: "color: white; text-align:center"} 連勝のオッズ一覧
+
+    %table{ style: "margin: 0 auto; border solid 1px black; text-align:center; margin-bottom:200px" }
+      %tr
+        %th{style: "background-color: black; color: white"}
+          二位 \ 一位
+        - @players.each.with_index do |p2,i|
+          %th{style: "background-color: #{table_th_color[i]}"}= p2.name
+      - @players.each.with_index do |p2,i|
+        - table_bg_color = "black" if i % 2 == 0
+        - table_bg_color = "gray"  if i % 2 != 0
+        %tr{style: "background-color: #{table_bg_color}"}
+          - @players.each.with_index do |p1,index|
+            - if index == 0
+              %th{style: "background-color: #{table_th_color[i]}"}= p2.name
+            %td{style: "color: white"}
+              - if p1 == p2
+                %p ー
+              - else
+                - sum = 0
+                - Ticket.double.where(player_1: p1.id).where(player_2: p2.id).each do |t|
+                  - sum = sum + t.number_of_set
+                = (1 / (sum / @double_total.to_f)).round(2)

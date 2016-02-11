@@ -7,6 +7,8 @@ class TicketsController < ApplicationController
   def new
     @ticket = Ticket.new
     @players = Player.all
+    @short_total = calc_short_total
+    @double_total = calc_double_total
   end
 
   def create
@@ -24,6 +26,22 @@ class TicketsController < ApplicationController
   def calc_number_of_tickets
     sum = 0
     Ticket.all.each do |t|
+      sum = sum + t.number_of_set
+    end
+    sum
+  end
+
+  def calc_short_total
+    sum = 0
+    Ticket.short.each do |t|
+      sum = sum + t.number_of_set
+    end
+    sum
+  end
+
+  def calc_double_total
+    sum = 0
+    Ticket.double.each do |t|
       sum = sum + t.number_of_set
     end
     sum
