@@ -1,4 +1,5 @@
 class Message < ApplicationMailer
+  default from: "info@iacc-dietrace2.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -8,7 +9,7 @@ class Message < ApplicationMailer
   def regist ticket
     @ticket = ticket
     filepath = Rails.root.join('app/assets/images/higuchi.jpg')
-    attachments['filename.jpg'] = File.read(filepath)
+    attachments['ビリケン.jpg'] = File.read(filepath)
 
     mail to: @ticket.email, subject: "【IACCダイエットレース】Thanks メール"
   end
