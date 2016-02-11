@@ -9,7 +9,13 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       ticket: チケット
-    attibutes:
+    attributes:
+      ticket:
+        name: お名前
+        email: メールアドレス
+        player_1: 一位予想
+        player_2: 二位予想
+        number_of_set: セット数
   enums:
     ticket:
       ticket_type:

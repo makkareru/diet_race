@@ -13,8 +13,8 @@ class Ticket < ActiveRecord::Base
 
   def no_equal_player
     if player_1 == player_2
-      errors.add(:player_1, "同じ選手を選択できません。")
-      errors.add(:player_2, "同じ選手を選択できません。")
+      errors.add(:player_1, "は異なる選手を選択してください。")
+      errors.add(:player_2, "は異なる選手を選択してください。")
     end
   end
 
