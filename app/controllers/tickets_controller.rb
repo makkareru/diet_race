@@ -16,7 +16,7 @@ class TicketsController < ApplicationController
       flash[:message] = "入力エラーがあります！ご確認ください"
       render :new
     else
-      flash[:message] = "応援ありがとうございます！"
+      flash[:message] = "送信しました！応援ありがとうございます！"
       redirect_to root_path
     end
   end

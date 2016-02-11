@@ -36,7 +36,7 @@
               %th
                 チケット種別
               %td
-                = f.input :ticket_type, label: "", as: :radio_buttons, collection: Ticket.ticket_types, checked: 0
+                = f.input :ticket_type, label: "", as: :radio_buttons, collection: Ticket.ticket_types, checked: 0, input_html: { class: "kind" }
             %tr
               %th
                 お名前
@@ -52,11 +52,12 @@
                 一位予想
               %td
                 = f.input :player_1, label: "", collection: @players, input_html: {class: "ticket_form_item"}
-            %tr
+            %tr#second_player
               %th
-                二位予想
+                %div 二位予想
               %td
-                = f.input :player_2, label: "*", collection: @players, input_html: {class: "ticket_form_item"}
+                %div
+                  = f.input :player_2, label: "*", collection: @players, input_html: {class: "ticket_form_item"}
             %tr
               %th
                 セット数
