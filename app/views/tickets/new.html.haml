@@ -36,7 +36,7 @@
               %th
                 チケット種別
               %td
-                = f.input :ticket_type, label: "", as: :radio_buttons, collection: Ticket.ticket_types, checked: 0, input_html: { class: "kind" }
+                = f.input :ticket_type, label: "", as: :radio_buttons, collection: Ticket.ticket_types, checked: "short"
             %tr
               %th
                 お名前
