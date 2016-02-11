@@ -20,7 +20,7 @@ ja:
     ticket:
       ticket_type:
         short: 単勝
-        double: 連勝
+        double: 馬単
   date:
     abbr_day_names:
     - 日
