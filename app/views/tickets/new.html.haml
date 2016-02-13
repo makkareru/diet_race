@@ -10,9 +10,20 @@
     /%div.ticket_form
     %div.player_list
       %table
+        %tr{style: "background-color: black;paddin-left:50px; text-weight: bold"}
+          %td{style: "text-align: center;"}
+            No.
+          %td
+            名称
+          %td
+            選手名
+          %td
+            体重
+          %td
+            オッズ
         - @players.each.with_index do |p,i|
-          - table_bg_color = "black" if i % 2 == 0
-          - table_bg_color = "gray"  if i % 2 != 0
+          - table_bg_color = "gray" if i % 2 == 0
+          - table_bg_color = "black"  if i % 2 != 0
           %tr{style: "background-color: #{table_bg_color}"}
             %th{style: "background-color: #{table_th_color[i]}"}
               = i+1
