@@ -45,7 +45,7 @@
               - Ticket.short.where(player_1: p.id).each do |t|
                 - sum = sum + t.number_of_set
               - num = (1 / (sum / @short_total.to_f) * 100)
-              - if num == Float::INFINITY || nil
+              - if num == Float::INFINITY || num.nan? || nil
                 = 0.0
               - else
                 = num.floor / 100.to_f
