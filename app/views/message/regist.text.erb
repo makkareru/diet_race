@@ -12,7 +12,7 @@
 
 <% if @ticket.ticket_type == "short" %>
 単勝： <%= Player.find(@ticket.player_1).name %>
-<%= @ticket.number_of_set * 1000 %> ペリカ
+<%= @ticket.number_of_set * 100 %>
 <% else %>
 連勝：
 ・一位予想 <%= Player.find(@ticket.player_1).name %>
